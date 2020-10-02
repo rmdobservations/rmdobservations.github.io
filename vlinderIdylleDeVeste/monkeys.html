@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+<p>Click the button to search a string for "W3Schools", and display the position of the match.</p>
+
+<button onclick="myFunction()">Try it</button>
+
+<p id="demo"></p>
+
+<script>
+
+
+
+
+function myFunction() {
+  var str = "Visit W3Schools!_22.json"; 
+    var str = "Visit W3Schools!.json"; 
+  var dash = str.search("_");
+  var dot = str.search(".json");
+  document.getElementById("demo").innerHTML = str;
+    document.getElementById("demo").innerHTML += "<br>";
+if(dash < 0) {
+  console.log("no index");
+  var ndash = Number(dash);
+  
+  var  ndot = Number(dot);
+   document.getElementById("demo").innerHTML += "ndash " + ndash + "<br>";
+   document.getElementById("demo").innerHTML += "ndot " + ndot + "<br>";
+  var nversion = ndot-ndash-1;
+  var nn=str.substr(ndash+1,nversion) ;
+   document.getElementById("demo").innerHTML += "nn " + nn + "<br>";
+  var ii = Number(nn);
+  
+  document.getElementById("demo").innerHTML += ii;
+}
+</script>
+
+</body>
+</html>

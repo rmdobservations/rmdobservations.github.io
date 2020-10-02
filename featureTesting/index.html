@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+ <title>My Map</title>
+<!-- CSS styling files -->  
+
+</style>
+<!-- // Openlayers 3 -->
+  <link rel="stylesheet" href="css/ol.css">
+ <script type="text/javascript" src="js/ol-debug.js"></script>
+<style type="text/css">
+
+.map {
+		height:200px;
+		width: 100%;
+		background-color: #b5d0d0;
+
+}
+ </style>
+</head>
+<body>
+<h2>Testing Features</h2>
+<p>This shows one point. Remember that the local version of <code>ol-debug.js</code> has some comments added,</p>
+   <div id="map" class="map"></div>   
+
+ <div id="name"></div>  
+ <h2>Detailed Feature tests</h2>
+<p> Link to new map 
+ <a href="featuretests.html">Ol javascript features</a></p>
+ 
+ </div>  
+ 
+  
+<script type="text/javascript">
+
+      var layer = new ol.layer.Tile({
+  		source: new ol.source.OSM()
+  			});
+var pointStyleFunction = function(feature, resolution) {
+		var circleimage = new ol.style.Circle({
+radius:5,
+fill:  new ol.style.Fill({color: "#00ff00"}),
+stroke:  new ol.style.Stroke({color: '#006600', width: 2})
+});
+
+var pointStrokeStyle = new ol.style.Style({
+image: circleimage
+});
+var style = [pointStrokeStyle];
+return style;
+}
+//vector style
+var fill = new ol.style.Fill({
+color: 'rgba(255,0,0,0.2)'
+});
+var stroke = new ol.style.Stroke(
+{color: '#006600', width: 2
+});
+var circle = new ol.style.Circle({
+radius: 6,
+fill: fill,
+stroke: stroke
+});
+var vectorStyle = new ol.style.Style({
+fill: fill,
+stroke: stroke,
+image: circle
+});
+
+/*var polygon = new ol.geom.Polygon([ [ [-20,-20],[-
+20,20],[20,20],[20,-20],[-20,-20] ] ]);
+polygon.transform('EPSG:4326', 'EPSG:3857');*/
+var center = ol.proj.transform([5.1, 52.443], 'EPSG:4326','EPSG:3857');
+
+//var center = ol.proj.transform([0,0], 'EPSG:4326','EPSG:3857');
+var mypoint = new ol.geom.Point(center);
+//var feature = new ol.Feature(point);
+var idNum=77;
+myId = "poi" + idNum.toString()
+var myfeature = new ol.Feature({
+geometry: mypoint,
+name: 'Menu Heading',
+id: myId,
+style: pointStyleFunction
+});
+myfeature.set({"menu":"point of Interest"})
+
+
+
+console.group("Info about Feature Object")
+console.log(myfeature.getGeometryName());
+console.log(myfeature.getProperties());
+console.log(myfeature.getId());
+console.log(myfeature.getStyle());
+console.log(myfeature.getKeys());
+console.log(myfeature.get("menu"));
+// layer also has a style function !!!!!!
+console.log(myfeature.getStyleFunction());
+console.groupEnd()
+//setGeometryName() 
+/*var source3 = new ol.source.Vector({
+features: [new ol.Feature(mypoint)],
+projection: 'EPSG:4326'
+});*/
+var source3 = new ol.source.Vector({
+features: [myfeature],
+projection: 'EPSG:4326'
+});
+var layer3 = new ol.layer.Vector({
+source: source3,
+style: vectorStyle
+});
+
+
+var interaction = new ol.interaction.DragRotateAndZoom();
+var control = new ol.control.FullScreen();
+
+
+
+/*var overlay = new ol.Overlay({
+position: center,
+element: document.getElementById('overlay')
+});*/
+/* fromstackoverflow https://gis.stackexchange.com/a/163903
+
+var iconFeature = new ol.Feature({
+        id: 'addressfeature',
+        geometry: new ol.geom.Point(ol.proj.transform([18.3261549, 50.2499405], 'EPSG:4326', 'EPSG:3857')),
+        popuptext: 'This would be my moveable feature ',
+ });
+ // this is what set's the ID:
+ iconFeature.setId('addressfeature');
+
+*/
+var view = new ol.View({
+center: center,
+zoom: 10
+});
+
+var map = new ol.Map({
+target: 'map',
+layers: [layer],
+/*interactions: [interaction],
+controls: [control],*/
+view: view
+});
+
+map.addLayer(layer3);
+
+map.on('pointermove', onMouseMove);
+
+	function onMouseMove(browserEvent) {
+var coordinate = browserEvent.coordinate;
+var pixel = map.getPixelFromCoordinate(coordinate);
+var el = document.getElementById('name');
+el.innerHTML = '';
+map.forEachFeatureAtPixel(pixel, function(feature) {
+el.innerHTML += feature.get('name') + '<br>';
+});
+}
+
+			/*	var layerVector = new ol.layer.Vector({
+      		source: sourceVector,
+      		name: "Check Feature Layer",
+				style: pointStyleFunction //styleA
+       		
+
+    			});
+map.addLayer(layerVector);
+
+*/
+
+function Shape(){
+this.name = 'Shape';
+this.toString = function () {
+return this.name;
+};
+}
+function TwoDShape(){
+this.name = '2D shape';
+}
+
+function Triangle(side, height){
+this.name = 'Triangle';
+this.side = side;
+this.height = height;
+this.getArea = function () {
+return this.side * this.height / 2;
+};
+}
+
+</script>
+
+
+</body>
+</html>

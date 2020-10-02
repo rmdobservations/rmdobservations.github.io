@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8"/>
+ <title>Feature tests</title>
+<!-- CSS styling files -->  
+<style type="text/css">
+map {
+height:500px;
+width: 100%;
+background-color: #b5d0d0;
+
+}
+</style>
+<!-- // Openlayers 3 -->
+  <link rel="stylesheet" href="css/ol.css">
+   <link rel="stylesheet" type="text/css" href="css/main.css"> 
+ <script type="text/javascript" src="js/ol-debug.js"></script>
+
+ <style type="text/css">
+ .extramargin {
+margin: 10px;
+ 
+ }
+ </style>
+</head>
+<body>
+ <div class="panelcontent">
+    <div id="map" class="map"></div>
+     <h2>Javascript info</h2>
+<!--  <div id="name"></div> -->   
+  <div id="featuretestsID">Ol javascript features</div>  
+</div>
+
+
+
+  <div class="panelcontent">
+  <div class= "extramargin">
+ 
+<p>Output of an empty <b>ol.style.Style </b> Object</p>
+<pre>
+<code>var a = new ol.style.Style()
+undefined
+a
+{…}
+fill_: null
+​geometryFunction_: function defaultGeometryFunction(feature)
+​geometry_: null
+​image_: null
+​renderer_: null
+​stroke_: null
+​text_: null
+​zIndex_: undefined
+<i>​<prototype>: Object { clone: clone(), 
+	getRenderer: getRenderer(), 
+	setRenderer: setRenderer(renderer), … }</i>
+</code></pre>
+ 
+</div>
+</div>
+<script type="text/javascript">
+
+var center = ol.proj.transform([5.12, 52.443], 'EPSG:4326','EPSG:3857');
+var layer1 = new ol.layer.Tile({
+source: new ol.source.OSM()
+});
+var view = new ol.View({
+center: center,
+zoom: 12,
+});
+
+var map = new ol.Map({
+	target: 'map',
+	layers: [layer1],
+	view:view
+	})
+
+ map.on('click', showInfo);
+
+	function showInfo(browserEvent) {
+	console.log("In showinfo",browserEvent);
+var coordinate = browserEvent.coordinate;
+var pixel = map.getPixelFromCoordinate(coordinate);
+
+var result = map.getFeaturesAtPixel(pixel);
+console.log("Is there a feature at this pixel: ",result)
+
+ var el = document.getElementById('featuretestsID');
+el.innerHTML = '';
+if(result){
+map.forEachFeatureAtPixel(pixel, function(feature) {
+
+console.log("Info about clicked point: ",feature);
+el.innerHTML += 'Feature Name: ' + feature.get('name') + '<br>';
+el.innerHTML += 'Feature Menu name: '+feature.get('menu') + '<br>';
+el.innerHTML += 'Layer name: ' +feature.get('layername') + '<br>';
+});
+} else {
+el.innerHTML += 'No features at this point <br>';
+}
+}
+//Feature 1 
+var point1 = new ol.geom.Point(center);
+var idNum=77;
+featureId1 = "poi" + idNum.toString()
+var feature1 = new ol.Feature({
+	geometry: point1,
+	name: 'Feature1',
+	id: featureId1
+	});
+feature1.setId(featureId1);
+var menu1 = {"menu":"photo1","layername":"layer1"};
+// Curious that I cannot use "set" to create a property by itself but later on can 
+// use "get" with the correct key
+// Seems logical but I had not expected it.
+feature1.setProperties(menu1)
+// end feature definition
+var source1 = new ol.source.Vector({
+	features: [feature1],
+	projection: 'EPSG:4326'
+	});
+var layer2 = new ol.layer.Vector({
+	source: source1
+});
+var layermenu1 = {"layermenu":"Name of layer2 menu"}
+layer2.setProperties(layermenu1)
+map.addLayer(layer2);
+console.group("Info about layer Object")
+console.log("Get Properties: ",layer2.getProperties());
+console.log("Get style: ",layer2.getStyle());
+console.log("Get keys: ",layer2.getKeys());
+console.log("New home-made property called layermenu: ",layer2.get("layermenu"));
+// layer also has a style function !!!!!!
+console.log("Get style function: ",layer2.getStyleFunction());
+console.groupEnd()
+console.group("Info about Feature Object")
+// in debug.js this is a circle but not defined as a circle.
+console.log("Get Geometry : ",feature1.getGeometry());
+console.log("Get Geometry name: ",feature1.getGeometryName());
+console.log("Get Properties: ",feature1.getProperties());
+console.log("Get Id: ",feature1.getId());
+//console.log("Get default Type: ",feature1.getType());
+console.log("Get style: ",feature1.getStyle());
+console.log("Get keys: ",feature1.getKeys());
+console.log("New home-made property called menu: ",feature1.get("menu"));
+
+// layer also has a style function !!!!!!
+console.log("Get style function: ",feature1.getStyleFunction());
+console.groupEnd()
+// Feature 2 create another feature east of feature 1 at another coodinate 
+// add it to source1
+// change the style. 
+var geoArray = [5.13, 52.443];
+
+var center = ol.proj.transform(geoArray, 'EPSG:4326','EPSG:3857');
+var point2 = new ol.geom.Point(center);
+var idNum=78;
+featureId2 = "poi" + idNum.toString()
+var feature2 = new ol.Feature({
+	geometry: point2,
+	name: 'Feature2',
+	id: featureId2
+	});
+feature2.setId(featureId2);
+
+var menu2 = {"menu":"photo2","layername":"layer2"};
+feature2.setProperties(menu2)
+// add feature to vector source
+source1.addFeature(feature2);
+
+//feature 3
+var geoArray = [5.14, 52.443];
+
+var center = ol.proj.transform(geoArray, 'EPSG:4326','EPSG:3857');
+var point3 = new ol.geom.Point(center);
+var idNum=79;
+featureId3 = "poi" + idNum.toString()
+var style3 = new ol.style.Style({
+	image: new ol.style.Circle({
+		fill: new ol.style.Fill({
+			color: 'blue'
+		}),
+		stroke: new ol.style.Stroke({
+			color: '#ffcc00',
+			width: 6
+			
+		}),
+		radius: 12
+	})
+});
+
+
+
+var feature3 = new ol.Feature({
+	geometry: point3,
+	name: 'Feature3',
+	id: featureId3,	
+	style: style3
+	});
+	feature3.setId(featureId3);
+
+var menu3 = {"menu":"photo3","layername":"layer3"};
+feature3.setProperties(menu3)
+
+var source3 = new ol.source.Vector({
+	features: [feature3],
+	projection: 'EPSG:4326'
+	});
+
+var layer3 = new ol.layer.Vector({
+
+source: source3,
+style: style3
+});
+
+map.addLayer(layer3)
+console.log("does layer name appear here? ",layer3)
+/////////trying to get layer name from feature
+
+
+
+
+/* additional notes
+This does not work, with or without "new". I think GeometryType is just a place holder
+
+...var g = ol.geom.GeometryType('Point')
+This does:
+... var g =  new ol.geom.Point()
+...command is:  g.getType()
+...result is: "Point"
+See documentation: https://openlayers.org/en/v4.6.5/apidoc/ol.geom.html
+Classes
+	Circle
+	Geometry
+	GeometryCollection
+	LinearRing
+	LineString
+	MultiLineString
+	MultiPoint
+	MultiPolygon
+	Point
+	Polygon
+	SimpleGeometry
+
+Default style is defined at the layer level, not the feature. Even if there is only one.
+  */
+/*  At console:
+feature2.getStyle()
+null
+Uncaught 
+Object { message: "Assertion failed. 
+See https://openlayers.org/en/v4.6.5/doc/errors/#41 for details.", 
+code: 41, name: "AssertionError", stack: "" }
+
+feature2.setStyle('Circle')
+
+Error 41
+Expected an ol.style.Style or an array of ol.style.Style.
+But it looks like it was set anyway.
+feature2.getStyle()
+"Circle"
+*/
+</script>
+
+
+</body>
+</html>
