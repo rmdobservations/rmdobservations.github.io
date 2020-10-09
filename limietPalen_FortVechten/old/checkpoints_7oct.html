@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+  <head><meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title>check Points</title>
+     <link rel="stylesheet" type="text/css" href="css/reset.css">
+ <link rel="stylesheet" type="text/css" href="css/main.css"> 
+
+
+   <link rel="stylesheet" type="text/css" href="css/editpoints.css">  
+    <script src="js/v4.6.5/ol-debug.js"></script>
+    <script type="text/javascript" src="js/jquery.js"></script>
+ 	<script type="text/javascript" src="js/customstylefunction.js"></script> 
+        <script type="text/javascript" src="js/checkpoints.js"></script>
+        
+         
+<style type="text/css">
+.map {
+width: 500px;
+height: 500px;
+
+}
+
+
+</style>    
+    
+  </head>
+  <body><div id="headercontainer"> 
+
+
+<div class="headertext">
+  
+  <a href="index.html" target="_blank">Backto  index</a>
+  <h2>Verifying final JSON</h2>
+  <p>This file is limietPalen_FortVechten/checkpoints.html</p>
+  <p>This has to be run from <code>localhost:3000</code> (started with <code>php -S localhost:3000</code> 
+  </p>
+ 
+</div> 
+ <div style="clear: both;"></div> 
+
+</div>
+  
+
+   <div class="panelcontent">
+   <div id="map" class="map"></div>
+<div id='photo-info'></div>;
+</div>
+
+
+
+  <div class="panelcontent">
+  
+<p>
+Features <span id="features" class="label label-primary">0</span>
+</p>
+
+
+
+ <form action=""  target="_blank" id="myform">
+    <p>Select json file : <input type="file" id="handlerfiles"  /><br>
+<!-- Read GPX Filename:   <input type="text" id="filenameid" value="" /><br> -->
+</form> 
+   <button id="clearpoints" >Clear  waypoints on map</button>
+
+     <button id="checkpoints" >plot  waypoints on map</button>
+       
+</div>
+  </body>
+</html>

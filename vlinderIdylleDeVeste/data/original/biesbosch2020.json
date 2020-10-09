@@ -1,0 +1,136 @@
+{
+"type": "FeatureCollection",
+"features": [
+{
+"type": "Feature",
+"id" : "0" ,
+"properties": {
+"name" : "20200717_131814.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73388888888889 , 51.7408333333333 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "1" ,
+"properties": {
+"name" : "20200717_131853.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73388888888889 , 51.7408333333333 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "2" ,
+"properties": {
+"name" : "20200717_131906.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73388888888889 , 51.7408333333333 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "3" ,
+"properties": {
+"name" : "20200717_132639.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73583333333333 , 51.7413888888889 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "4" ,
+"properties": {
+"name" : "20200717_132647.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73583333333333 , 51.7413888888889 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "5" ,
+"properties": {
+"name" : "20200717_133107.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.76666666666667 , 51.7375 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "6" ,
+"properties": {
+"name" : "20200717_133126.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.74 , 51.6888888888889 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "7" ,
+"properties": {
+"name" : "20200717_133138.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.69444444444444 , 51.7655555555556 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "8" ,
+"properties": {
+"name" : "20200717_133157.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.69444444444444 , 51.7655555555556 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "9" ,
+"properties": {
+"name" : "20200717_134815.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73194444444444 , 51.6930555555556 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "10" ,
+"properties": {
+"name" : "20200717_134848.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.73916666666667 , 51.7433333333333 ]
+}
+}
+,
+{
+"type": "Feature",
+"id" : "11" ,
+"properties": {
+"name" : "20200717_135624.jpg"
+},
+"geometry": { "type": "Point",
+"coordinates": [ 4.74166666666667 , 51.7452777777778 ]
+}
+}
+]
+}
