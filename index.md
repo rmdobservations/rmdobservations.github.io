@@ -20,15 +20,15 @@
     
      	<li><a href="vlinderIdylleDeVeste/index.html">vlinderIdylleDeVeste </a></li>
      	<li><a href="rmdfotoviewer.html">RMD foto viewer</a></li>
-    
+    <li><a href="limietPalen_FortVechten.html">Limietpalen Fort Vechten</a></li>
      	
-    
+ <!--   
 <li><a href="scratch/website/index.html">Scratch home website</a></li>
 	<li><a href="kidsprogramming/index.html">kidsprogramming</a></li>
 	<li><a href="raspberry/index.html">raspberry</a></li>
 	<li><a href="microbit/index.html">Micro-bit</a></li>
 		<li><a href="tfwebsite/index.html">tfd</a></li>
-			
+	-->		
 		
 </ol>
     </div>
