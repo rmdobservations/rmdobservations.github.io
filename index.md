@@ -20,7 +20,7 @@
     
      	<li><a href="vlinderIdylleDeVeste/index.html">vlinderIdylleDeVeste </a></li>
      	<li><a href="rmdfotoviewer.html">RMD foto viewer</a></li>
-    <li><a href="limietPalen_FortVechten.html">Limietpalen Fort Vechten</a></li>
+    <li><a href="limietPalen_FortVechten/index.html">Limietpalen Fort Vechten</a></li>
      	
  <!--   
 <li><a href="scratch/website/index.html">Scratch home website</a></li>
