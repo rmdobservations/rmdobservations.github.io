@@ -69,6 +69,7 @@ $(GD.dom_element).cycle('destroy');
 	sourceVector.forEachFeature(function(feature) {
 		index=feature.getId();
 		itemArr[index]=imagepath+feature.get('name');
+		console.log("Image is: ",itemArr[index]);
 		textArr[index]=feature.get("name");
 	});
 		itemArr.reverse();
