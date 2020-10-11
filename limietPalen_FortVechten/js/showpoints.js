@@ -84,11 +84,13 @@ $(GD.dom_element).cycle('destroy');
 			imgCont = '<div class="slide_element" >';
 			imgCont+='<div class="foto-pane">';
 			imgCont+='<div class="photo">';
-			imgCont+= "<img  src=" + itemArr[i] + "/>";
+		//	imgCont+= "<img  src=" + itemArr[i] + "/>";
+	//imgCont+="https://rmdobservations.github.io/limietPalen_FortVechten/data/json/palthumb/pal01.jpg";
+		imgCont+="<img src=data/json/palthumb/pal01.jpg>";
 			imgCont+='</div>';
 			imgCont+='<div class="journal-text">';
 			imgCont+=textArr[i];
-		//	slide = 'id="slide'+i.toString()+ '"';
+	
 			imgCont+='</div></div></div>';
 			$(imgCont).prependTo(dom_element);
 		 }; 
