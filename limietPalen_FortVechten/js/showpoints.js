@@ -212,8 +212,13 @@ $.fn.mapfunction = function(GD){
 		.promise();
     }
     catch (error) {
+<<<<<<< HEAD
     //	alert("This applcation works only on the desktop")
       console.log("In handler files event..catch error..." + error);
+=======
+    	alert("This applcation works only on the desktop")
+//       console.log("In handler files event..catch error..." + error);
+>>>>>>> 5d9b2340ea4c422400b902305b6b9cd1a1dabc0e
     }
     finally {
         console.log('Finished loading file');
@@ -235,7 +240,107 @@ $.fn.mapfunction = function(GD){
 				console.log("This has no purpose: ",result)	;	
 			/*	var selectedFeatures = result.getFeatures();
 console.log("What is this:",selectedFeatures)	;	*/
+<<<<<<< HEAD
 
+=======
+				$('button#writedatatofile').on('click', function() {
+				var layer = GD.map.getLayers();
+
+				var layerVector= layer.item(1);
+				var sourceVector = layerVector.getSource();
+				var featuresCollection = sourceVector.getFeatures()
+
+			/*	console.info("Button clickevent: ",event.target);
+				event.preventDefault();  
+				event.stopImmediatePropagation()*/
+				//console.log("Number of features written: ",featuresCollection.length);
+			
+			featuresCollection.forEach(function (f,index) {
+				console.log("Loop Index: ",index);
+				console.log(f.getId());
+				
+				 var properties = {
+				'desc':'temp description'
+				}
+				//alert(" are wrong")
+				//f.setId(index);
+				f.setProperties(properties);
+	 		})	
+	 		featuresCollection.forEach(function (f,index) {
+			//console.log("ID from setId: ",f.getId(index), "loop index: ",index);
+				//console.log("type of id: ",f.getId(index))
+			})
+			var geojson= new ol.format.GeoJSON();
+			var options = {
+				dataProjection: 'EPSG:4326',
+				featureProjection	: 'EPSG:3857'
+			}
+			var featuresJSON = geojson.writeFeatures(featuresCollection,options);
+			
+			var versionIndex = GD.versionIndex+1;
+			console.log("Version Index: ",GD.versionIndex," incremented to " ,versionIndex)
+	
+						ourObj= 	{
+					"datapath": GD.datapath,
+						"projectprefix": GD.projectprefix ,
+					  "versionIndex": versionIndex.toString() ,
+						"jsonfeatures": featuresJSON }
+					
+				$.ajax({
+		        url: "writeJSONpoints.php",
+					type: "post",
+      			data: {"ourobject":JSON.stringify(ourObj)},
+        		success: function(output){
+  	      	console.log("In Ajax success JSON data written to file in php");
+  	      	 /* document.getElementById("statusmessage").innerHTML = "<br>" ;
+  	      	  document.getElementById("statusmessage").innerHTML += output
+  	      	  document.getElementById("statusmessage").innerHTML +=  "<br>";*/
+  	      	  
+  	      	//console.log(output);
+				 sourceVector.clear() // have a dangling selected feature,click on map until
+				 // style is back to original and then they are all  deleted. 
+  	      	//console.log("remove features: are they removedfrom map?")
+  	      		}
+		   	});
+
+		}); //button#writedatatofile'
+		$('button#newlayer').on('click', function() {
+			var interactions = map.getInteractions();
+			var interactionsArray = map.getInteractions().getArray();
+			console.log("Interactions: ",interactions)
+				console.log("Interactions array length: ",interactionsArray.length)
+			for (i = interactionsArray.length - 1; i >= 0; i--) {
+      	var interaction = interactionsArray[i];
+      		if (!interaction.getActive()) {
+        	console.log("not active: ",interaction)
+      		} else {
+      			 	console.log(" active: ",interaction.get("name"))
+      		}
+			}
+			let path = GD.outputpath
+			let newfile = path.concat(GD.projectprefix,".json")
+			
+			console.log("plot new points from: ",newfile)
+			var jsonformat=new ol.format.GeoJSON();
+			
+
+
+			var sourceVector = new ol.source.Vector({
+      	url: newfile,
+      	format: jsonformat
+    		});
+	
+				var layerVector = new ol.layer.Vector({
+      		source: sourceVector,
+      		name: "Check Feature Layer",
+				style: pointStyleFunction //styleA
+       		
+
+    			});
+map.addLayer(layerVector);
+
+});
+>>>>>>> 5d9b2340ea4c422400b902305b6b9cd1a1dabc0e
 		})
 
 		}) 

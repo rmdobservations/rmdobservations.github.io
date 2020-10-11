@@ -5,21 +5,27 @@
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
     
-    <title>Github projects</title>
+    <title>Github Projects</title>
 <link rel="shortcut icon" type="image/x-icon" href="favicon.ico"> 
   <link rel="stylesheet" type="text/css" href="css/index.css"></link>
   </head>
   <body>
     <div class="main_page">
     
-
+	    <h2>github main index.html</h2>
      
      
      
      <ol>
-    
+<<<<<<< HEAD
+      	<li><a href="shiftlocations/index.html">Shift Locations App</a></li>
      	<li><a href="vlinderIdylleDeVeste/index.html">vlinderIdylleDeVeste </a></li>
+<!--      	<li><a href="rmdfotoviewer.html">RMD foto viewer</a></li>
+=======
+      	<li><a href="limietPalen_FortVechten/index.html">Limiet palen</a></li>
+	<li><a href="vlinderIdylleDeVeste/index.html">vlinderIdylleDeVeste </a></li>
      	<li><a href="rmdfotoviewer.html">RMD foto viewer</a></li>
+>>>>>>> 5d9b2340ea4c422400b902305b6b9cd1a1dabc0e
     
      	
     
@@ -27,7 +33,7 @@
 	<li><a href="kidsprogramming/index.html">kidsprogramming</a></li>
 	<li><a href="raspberry/index.html">raspberry</a></li>
 	<li><a href="microbit/index.html">Micro-bit</a></li>
-		<li><a href="tfwebsite/index.html">tfd</a></li>
+		<li><a href="tfwebsite/index.html">tfd</a></li> -->
 			
 		
 </ol>
