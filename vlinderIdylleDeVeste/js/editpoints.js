@@ -222,7 +222,7 @@ $.fn.mapfunction = function(GD){
     	var file = evt.target.files[0];
     	console.log("file is: ",file)
     //filename = "data/original/test.json";
-		var href=window.location.href;
+		var href=".."+window.location.href;
 		console.log("Website root path name: ",href)
 		/* not sure if this is necessary */	   	
    	//var localpath = href.substr(0,href.length-file.name.length+1);

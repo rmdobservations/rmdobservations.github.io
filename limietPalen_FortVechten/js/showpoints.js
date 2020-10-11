@@ -60,12 +60,10 @@ $(GD.dom_element).cycle('destroy');
 	console.log("check layer: ",layers.item(1).get('name'))
 	
 	let sourceVector = layerVector.getSource();
-//	console.log("prefix: ",prefix)
-var href=window.location.href;
-		console.log("Website root path name: ",href)
+
 		let thumbdir=GD.projectprefix.concat("thumb/");
 
-	let imagepath = href+ GD.datapath + thumbdir;
+	let imagepath = GD.datapath + thumbdir;
 		console.log("imagepath for images: ",imagepath)
 		var index,itemArr,textArr;
 	sourceVector.forEachFeature(function(feature) {
@@ -85,7 +83,7 @@ var href=window.location.href;
 			imgCont = '<div class="slide_element" >';
 			imgCont+='<div class="foto-pane">';
 			imgCont+='<div class="photo">';
-			imgCont+= '<img src=' + itemArr[i] + '/>';
+			imgCont+= '<img  width="186" src=' + itemArr[i] + '/>';
 			imgCont+='</div>';
 			imgCont+='<div class="journal-text">';
 			imgCont+=textArr[i];
