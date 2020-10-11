@@ -61,9 +61,11 @@ $(GD.dom_element).cycle('destroy');
 	
 	let sourceVector = layerVector.getSource();
 //	console.log("prefix: ",prefix)
+var href=window.location.href;
+		console.log("Website root path name: ",href)
 		let thumbdir=GD.projectprefix.concat("thumb/");
 
-	let imagepath = GD.datapath + thumbdir;
+	let imagepath = href+ GD.datapath + thumbdir;
 		console.log("imagepath for images: ",imagepath)
 		var index,itemArr,textArr;
 	sourceVector.forEachFeature(function(feature) {
