@@ -79,11 +79,12 @@ $(GD.dom_element).cycle('destroy');
 		let slide_element = GD.slide_element;
 		let slide_element_class = GD.slide_element_class;	
 		var i,imgCont,slide; // variables in for loop
+		var url="https://rmdobservations.github.io/limietPalen_FortVechten/";
 		for(i= 0;i< itemArr.length;++i){
 			imgCont = '<div class="slide_element" >';
 			imgCont+='<div class="foto-pane">';
 			imgCont+='<div class="photo">';
-			imgCont+= '<img  width="186" src=' + itemArr[i] + '/>';
+			imgCont+= '<img  src=' + url+itemArr[i] + '/>';
 			imgCont+='</div>';
 			imgCont+='<div class="journal-text">';
 			imgCont+=textArr[i];
