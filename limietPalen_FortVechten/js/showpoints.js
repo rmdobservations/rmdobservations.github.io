@@ -82,9 +82,9 @@ $(GD.dom_element).cycle('destroy');
 		for(i= 0;i< itemArr.length;++i){
 			imgCont = '<div class="slide_element" >';
 			imgCont+='<div class="foto-pane">';
-			imgCont+='<div class="photo">';
-			imgCont+= '<img src=' + itemArr[i] + '/>';
-			imgCont+='</div>';
+			//imgCont+='<div class="photo">';
+			imgCont+= '<img class="photo" src=' + itemArr[i] + '/>';
+		//	imgCont+='</div>';
 			imgCont+='<div class="journal-text">';
 			imgCont+=textArr[i];
 		//	slide = 'id="slide'+i.toString()+ '"';
