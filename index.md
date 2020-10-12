@@ -14,7 +14,7 @@
     
 
      
-     
+     <p>this is index.md, edited manually n github</p>
      
      <ol>
     
