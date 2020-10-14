@@ -1,12 +1,7 @@
 /*
-Filename: editpoints.js
-Purpose: Handle input and output from editpoints.html
-Setup: Most important object containing data that is common and needed throughout
-	the code.
-
-
-
-
+Filename: showpoints.js
+Purpose: Handle input and output from showpoints.html
+Setup: 
 */
 /* This maybe should be in a file*/
 /* css stuff is here because it is used in more than one place and 
@@ -22,8 +17,6 @@ Setup: Most important object containing data that is common and needed throughou
 	slide_element:  ".slide_element",
 	slide_element_class: "slide_element",
 	mapzoom: 14
-
-
 	}
 
 

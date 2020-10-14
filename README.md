@@ -4,8 +4,8 @@ https://rmdobservations.github.io/index.html
 
 ![Limiet Palen around Fort Vechten](./limietPalen_FortVechten/limietpalenFortVechten.png)
 ## Table of contents
-* [General info](#general-info)
-* [Technologies](#technologies)
+* [limietpalen](https://rmdobservations.github.io/limietPalen_FortVechten/index.html)
+* [vlinderidylle](https://rmdobservations.github.io/vlinderIdylleDeVeste/index.html)
 * [Setup](#setup)
 
 ## General info
