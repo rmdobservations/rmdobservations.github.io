@@ -2,7 +2,9 @@
 ## Maps and Fotos Websites
 https://rmdobservations.github.io/index.html
 
+[comment]: <>  
 ![Limiet Palen around Fort Vechten](./limietPalen_FortVechten/limietpalenFortVechten.png)
+
 ## Table of contents
 * [limietpalen](https://rmdobservations.github.io/limietPalen_FortVechten/index.html)
 * [vlinderidylle](https://rmdobservations.github.io/vlinderIdylleDeVeste/index.html)
