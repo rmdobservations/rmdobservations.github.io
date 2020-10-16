@@ -4,6 +4,28 @@ https://rmdobservations.github.io/index.html
 
 [comment]: <>  
 ![Limiet Palen around Fort Vechten](./limietPalen_FortVechten/limietpalenFortVechten.png)
+[comment]: <>  - aim of project
+# Table of contents
+* Introduction
+* Technologies
+* Launch
+* Illustrations
+* Scope of functionalities
+* Examples of use
+* Project Status
+* Sources
+* Credits:
+* Suggestions for README https://bulldogjob.com/news/449-how-to-write-a-good-readme-for-your-github-project
+
+## Introduction
+The central theme of these projects is displaying photographs and their location on a map.
+Emphasis is made on small projects. No node.js stuff. 
+
+## Technologies
+
+
+## Launch
+
 
 ## Table of contents
 * [limietpalen](https://rmdobservations.github.io/limietPalen_FortVechten/index.html)
