@@ -4,7 +4,7 @@ var selectStyleFunction = function(feature, resolution) {
 
 	var label= feature.get("label");
 
-//		console.log("------------------GET Feature label: ",label);
+	console.log("------------------GET Feature label: ",label);
 	if ( label !== undefined ) {
 		var textStyle = {
 		text: new ol.style.Text({
@@ -83,18 +83,3 @@ var textStyleFunction = function(feature, resolution) {
 };
 
 	
-	
-/* for plotting points from new file */	
-var pointStyleFunction = function(feature, resolution) {
-		var circleimage = new ol.style.Circle({
-radius:5,
-fill:  new ol.style.Fill({color: "#00ff00"}),
-stroke:  new ol.style.Stroke({color: '#006600', width: 2})
-});
-
-var pointStrokeStyle = new ol.style.Style({
-image: circleimage
-});
-var style = [pointStrokeStyle];
-return style;
-}

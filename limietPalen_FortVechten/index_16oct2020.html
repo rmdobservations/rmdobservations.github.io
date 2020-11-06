@@ -3,7 +3,7 @@ Filename: showpoints.js
 Purpose: Handle input and output from showpoints.html
 Setup: 
 */
-var GD = { // your namespace
+var ns = { // your namespace
 	my_value: 1,
 	ClassA: function() { 
 // a class inside the namespace
@@ -15,28 +15,34 @@ var GD = { // your namespace
     myFunction: function() { // a function inside a namespace
         console.log("I can access namepsace value if you don't use 'new': " + this.my_value);
     }
- }
- 
-var GD = GD || {};
-GD.map ={
-	map: null,
-	zoom: 14,
 };
-GD.css = {
-		dom_element: ".dom_element",
-		slide_element:  ".slide_element",
-		slide_element_class: "slide_element"
-}
-GD.props = {
-		projectprefix: "pal",	
-		datapath: "./data/json/",
-		versionIndex: 0
 
-		}
-		
-GD.createmap =  createMap;
-GD.createSlideShow= createSlideshow;
-GD.setupInteractive= setupInteractive;
+
+
+		var ClassB = function (a) { 
+		this.map= null;
+		this.projectprefix= "pal";	
+		this.datapath= "./data/json/";
+		this.versionIndex= 0;
+		this.dom_element= ".dom_element";
+		this.slide_element=  ".slide_element";
+		this.slide_element_class= "slide_element";
+		this.mapzoom= 14;
+		this.createSlideShow = function (b) {
+			b=20;
+			console.log("testing slide show function: ",this);
+			console.log("testing slide show parameter: ",b);
+	};
+};
+var MyNamespace = MyNamespace || {};
+MyNamespace.ClassB = new ClassB();
+
+MyNamespace.ClassB.createSlideShow(10);
+
+
+	
+
+
 
 var mapfunction = function(){
 	var rmdgetData = async function() {
@@ -64,20 +70,19 @@ var mapfunction = function(){
 	
 	rmdgetData().then(jsondataObj => {
 	
-	$.when(createMap(jsondataObj)).done(function()
+	$.when(createMap(jsondataObj)).done(function(map)
 		{
-			
-			$.when(createSlideshow()).done(function(result)
+			GD.map = map;
+			$.when(createSlideshow(GD)).done(function(result)
 			{
 
-			//	console.group("After slide show: ",result)
-				setupInteractive();
-				//	console.groupEnd();
-			/*$.when(setupInteractive()).done(function(result)
+				console.group("After slide show: ",result)
+				
+			$.when(setupInteractive(GD)).done(function(result)
 			{
 				console.log("This has no purpose: ",result)	;	
 			})
-*/
+
 		}) 
  		})
 })
