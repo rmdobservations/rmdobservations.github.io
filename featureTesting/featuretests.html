@@ -16,7 +16,32 @@ background-color: #b5d0d0;
   <link rel="stylesheet" href="css/ol.css">
    <link rel="stylesheet" type="text/css" href="css/main.css"> 
  <script type="text/javascript" src="js/ol-debug.js"></script>
+ <script type="text/javascript">
+ // Information when click event occurs on map
+ 	function showInfo(browserEvent) {
+		console.log("In showinfo",browserEvent);
+		var coordinate = browserEvent.coordinate;
+		var pixel = map.getPixelFromCoordinate(coordinate);
 
+		var result = map.getFeaturesAtPixel(pixel);
+		console.log("Is there a feature at this pixel: ",result);
+
+ 		var el = document.getElementById('featuretestsID');
+		el.innerHTML = '';
+
+		if(result)
+			{
+				map.forEachFeatureAtPixel(pixel, function(feature) {
+				console.log("Info about clicked point: ",feature);
+				el.innerHTML += 'Feature Name: ' + feature.get('name') + '<br>';
+				el.innerHTML += 'Feature Menu name: '+feature.get('menu') + '<br>';
+				el.innerHTML += 'Layer name: ' +feature.get('layername') + '<br>';
+			});
+		} else {
+			el.innerHTML += 'No features at this point <br>';
+		}
+	}
+</script>	
  <style type="text/css">
  .extramargin {
 margin: 10px;
@@ -25,196 +50,191 @@ margin: 10px;
  </style>
 </head>
 <body>
- <div class="panelcontent">
-    <div id="map" class="map"></div>
-     <h2>Javascript info</h2>
-<!--  <div id="name"></div> -->   
-  <div id="featuretestsID">Ol javascript features</div>  
+<div class="panelcontent">
+<div id="map" class="map"></div>
+     <h2>Javascript info</h2> 
+     <p>In order for slide show to work with map, the features and fotos need to be aware of which layer they are in. I create a home-made property with a key that to add to the feature Object.</p>
+     <p><ul>
+	<li>Base Tile Layer</li>
+	<li>Layer A has 2 features</li>
+	<li>Layer B has 1 feature</li>
+</ul></p>
+	  <div id="featuretestsID">Ol javascript features: this text will be overwritten</div>  
 </div>
 
-
-
-  <div class="panelcontent">
-  <div class= "extramargin">
- 
-<p>Output of an empty <b>ol.style.Style </b> Object</p>
-<pre>
-<code>var a = new ol.style.Style()
-undefined
-a
-{…}
-fill_: null
-​geometryFunction_: function defaultGeometryFunction(feature)
-​geometry_: null
-​image_: null
-​renderer_: null
-​stroke_: null
-​text_: null
-​zIndex_: undefined
-<i>​<prototype>: Object { clone: clone(), 
-	getRenderer: getRenderer(), 
-	setRenderer: setRenderer(renderer), … }</i>
-</code></pre>
+<div class="panelcontent">
+<div class= "extramargin">
+ 	<p>Output of an empty <b>ol.style.Style </b> Object</p>
+		<pre><code>
+		var a = new ol.style.Style()
+		undefined
+		a
+		{…}
+		fill_: null
+​		geometryFunction_: function defaultGeometryFunction(feature)
+​		geometry_: null
+​		image_: null
+​		renderer_: null
+​		stroke_: null
+​		text_: null
+​		zIndex_: undefined
+		<i>​<prototype>: Object { clone: clone(), 
+			getRenderer: getRenderer(), 
+			setRenderer: setRenderer(renderer), … }</i>
+		</code></pre>
  
 </div>
 </div>
 <script type="text/javascript">
-
+// create map
 var center = ol.proj.transform([5.12, 52.443], 'EPSG:4326','EPSG:3857');
-var layer1 = new ol.layer.Tile({
-source: new ol.source.OSM()
+var baselayer = new ol.layer.Tile({
+	source: new ol.source.OSM()
 });
 var view = new ol.View({
-center: center,
-zoom: 12,
+	center: center,
+	zoom: 12,
 });
 
 var map = new ol.Map({
 	target: 'map',
-	layers: [layer1],
+	layers: [baselayer],
 	view:view
 	})
+// end creation of map
+map.on('click', showInfo);
 
- map.on('click', showInfo);
 
-	function showInfo(browserEvent) {
-	console.log("In showinfo",browserEvent);
-var coordinate = browserEvent.coordinate;
-var pixel = map.getPixelFromCoordinate(coordinate);
 
-var result = map.getFeaturesAtPixel(pixel);
-console.log("Is there a feature at this pixel: ",result)
 
- var el = document.getElementById('featuretestsID');
-el.innerHTML = '';
-if(result){
-map.forEachFeatureAtPixel(pixel, function(feature) {
+// Create layer A 
+	var sourceA = new ol.source.Vector({
+		projection: 'EPSG:4326'
+		});
+	var layerA = new ol.layer.Vector({
+		source: sourceA
+		});
+	var layermenuA = {"layermenu":"Name of layerA menu"}
+	layerA.setProperties(layermenuA);
 
-console.log("Info about clicked point: ",feature);
-el.innerHTML += 'Feature Name: ' + feature.get('name') + '<br>';
-el.innerHTML += 'Feature Menu name: '+feature.get('menu') + '<br>';
-el.innerHTML += 'Layer name: ' +feature.get('layername') + '<br>';
-});
-} else {
-el.innerHTML += 'No features at this point <br>';
-}
-}
-//Feature 1 
-var point1 = new ol.geom.Point(center);
-var idNum=77;
-featureId1 = "poi" + idNum.toString()
-var feature1 = new ol.Feature({
-	geometry: point1,
-	name: 'Feature1',
-	id: featureId1
-	});
-feature1.setId(featureId1);
-var menu1 = {"menu":"photo1","layername":"layer1"};
+	map.addLayer(layerA);
+	
+	console.group("Info about layerA Object");
+	console.log("Get Properties: ",layerA.getProperties());
+	console.log("Get style: ",layerA.getStyle());
+	console.log("Get keys: ",layerA.getKeys());
+	console.log("New home-made property called layermenu: ",layerA.get("layermenu"));
+	// layer also has a style function !!!!!!
+	console.log("Get style function: ",layerA.getStyleFunction());
+	console.groupEnd();
+// Add feature1 to layer A.	
+	
+// Feature 1 definition 
+	var point1 = new ol.geom.Point(center);
+	var idNum=77;
+	var featureId1 = "poi" + idNum.toString()
+	var feature1 = new ol.Feature({
+		geometry: point1,
+		name: 'Feature1',
+		id: featureId1
+		});
+
+	feature1.setId(featureId1);
+	// create home-made properties which contain layer name and photo key associated with feature.
+	var menu1 = {"menu":"photo1","layername":"layerA"};
+
 // Curious that I cannot use "set" to create a property by itself but later on can 
 // use "get" with the correct key
 // Seems logical but I had not expected it.
-feature1.setProperties(menu1)
+
+	feature1.setProperties(menu1)
 // end feature definition
-var source1 = new ol.source.Vector({
-	features: [feature1],
+	sourceA.addFeature(feature1);
+	
+	console.group("Info about Feature 1 Object");
+	// in ol-debug.js this is a circle but not defined as a circle.
+	console.log("Get Geometry : ",feature1.getGeometry());
+	console.log("Get Geometry name: ",feature1.getGeometryName());
+	console.log("Get Properties: ",feature1.getProperties());
+	console.log("Get Id: ",feature1.getId());
+	//console.log("Get default Type: ",feature1.getType());
+	console.log("Get style: ",feature1.getStyle());
+	console.log("Get keys: ",feature1.getKeys());
+	console.log("New home-made property called menu1 with key menu : ",feature1.get("menu"));
+
+	console.log("Get style function: ",feature1.getStyleFunction());
+	console.groupEnd();
+	
+// Feature 2 create another feature east of feature 1 at another coordinate 
+// add it to sourceA
+// change the style. 
+	var geoArray = [5.13, 52.443];
+	var center = ol.proj.transform(geoArray, 'EPSG:4326','EPSG:3857');
+	var point2 = new ol.geom.Point(center);
+	var idNum=78;
+	var featureId2 = "poi" + idNum.toString();
+	var feature2 = new ol.Feature({
+		geometry: point2,
+		name: 'Feature2',
+		id: featureId2
+		});
+	feature2.setId(featureId2);
+
+	var menu2 = {"menu":"photo2","layername":"layerA"};
+	feature2.setProperties(menu2)
+	// add feature to vector sourceA for layerA
+
+	sourceA.addFeature(feature2);
+
+// Add Layer B to map	
+var sourceB = new ol.source.Vector({
 	projection: 'EPSG:4326'
 	});
-var layer2 = new ol.layer.Vector({
-	source: source1
+
+var layerB = new ol.layer.Vector({
+	source: sourceB
 });
-var layermenu1 = {"layermenu":"Name of layer2 menu"}
-layer2.setProperties(layermenu1)
-map.addLayer(layer2);
-console.group("Info about layer Object")
-console.log("Get Properties: ",layer2.getProperties());
-console.log("Get style: ",layer2.getStyle());
-console.log("Get keys: ",layer2.getKeys());
-console.log("New home-made property called layermenu: ",layer2.get("layermenu"));
-// layer also has a style function !!!!!!
-console.log("Get style function: ",layer2.getStyleFunction());
-console.groupEnd()
-console.group("Info about Feature Object")
-// in debug.js this is a circle but not defined as a circle.
-console.log("Get Geometry : ",feature1.getGeometry());
-console.log("Get Geometry name: ",feature1.getGeometryName());
-console.log("Get Properties: ",feature1.getProperties());
-console.log("Get Id: ",feature1.getId());
-//console.log("Get default Type: ",feature1.getType());
-console.log("Get style: ",feature1.getStyle());
-console.log("Get keys: ",feature1.getKeys());
-console.log("New home-made property called menu: ",feature1.get("menu"));
 
-// layer also has a style function !!!!!!
-console.log("Get style function: ",feature1.getStyleFunction());
-console.groupEnd()
-// Feature 2 create another feature east of feature 1 at another coodinate 
-// add it to source1
-// change the style. 
-var geoArray = [5.13, 52.443];
+map.addLayer(layerB);
+console.log("does layer name appear here? ",layerB)
 
-var center = ol.proj.transform(geoArray, 'EPSG:4326','EPSG:3857');
-var point2 = new ol.geom.Point(center);
-var idNum=78;
-featureId2 = "poi" + idNum.toString()
-var feature2 = new ol.Feature({
-	geometry: point2,
-	name: 'Feature2',
-	id: featureId2
-	});
-feature2.setId(featureId2);
-
-var menu2 = {"menu":"photo2","layername":"layer2"};
-feature2.setProperties(menu2)
-// add feature to vector source
-source1.addFeature(feature2);
-
-//feature 3
+//Create feature 3 for layer B
 var geoArray = [5.14, 52.443];
 
 var center = ol.proj.transform(geoArray, 'EPSG:4326','EPSG:3857');
+
 var point3 = new ol.geom.Point(center);
+
 var idNum=79;
-featureId3 = "poi" + idNum.toString()
+var featureId3 = "poi" + idNum.toString()
 var style3 = new ol.style.Style({
-	image: new ol.style.Circle({
-		fill: new ol.style.Fill({
+		image: new ol.style.Circle({
+			fill: new ol.style.Fill({
 			color: 'blue'
-		}),
+			}),
 		stroke: new ol.style.Stroke({
 			color: '#ffcc00',
 			width: 6
-			
 		}),
 		radius: 12
 	})
 });
 
-
-
 var feature3 = new ol.Feature({
 	geometry: point3,
 	name: 'Feature3',
-	id: featureId3,	
-	style: style3
+	id: featureId3
 	});
 	feature3.setId(featureId3);
 
-var menu3 = {"menu":"photo3","layername":"layer3"};
+var menu3 = {"menu":"photo3","layername":"layerB"};
+feature3.setStyle(style3);
 feature3.setProperties(menu3)
+console.log("*******************Feature 3 debug: ",feature3);
+sourceB.addFeature(feature3);
 
-var source3 = new ol.source.Vector({
-	features: [feature3],
-	projection: 'EPSG:4326'
-	});
 
-var layer3 = new ol.layer.Vector({
 
-source: source3,
-style: style3
-});
-
-map.addLayer(layer3)
-console.log("does layer name appear here? ",layer3)
 /////////trying to get layer name from feature
 
 
