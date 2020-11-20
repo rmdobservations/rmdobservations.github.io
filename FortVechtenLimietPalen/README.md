@@ -1,6 +1,6 @@
 # Limietpalen
 ## Maps and Fotos Websites
-https://rmdobservations.github.io/limietPalen_FortVechten/index.html
+https://rmdobservations.github.io/FortVechtenLimietPalen/index.html
 [comment]: <>  - aim of project
 # Table of contents
 * Introduction
