@@ -18,14 +18,7 @@ https://rmdobservations.github.io/limietPalen_FortVechten/index.html
 Fort Vechten is surrounded by stone posts buried in the ground. Using the GPS of a mobile phone
 the locations have been plotted.
 
-## Modules for showpoints.js
-* createmap.js
-* createslideshow.js
-* setupinteractive.js
-* pointstyles.js
-
-## Previous version
-All javascript in one file
+## Technologies
 
 
 ## Launch
