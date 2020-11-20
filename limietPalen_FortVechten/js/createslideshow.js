@@ -67,7 +67,7 @@ $(dom_element).cycle('destroy');
 			imgCont = '<div class="slide_element" >';
 			imgCont+='<div class="foto-pane">';
 			imgCont+='<div class="photo">';
-			imgCont+= "<img src=" + itemArr[i] + ">";
+			imgCont+= "<img src=" + itemArr[i] + " data-cycle-hash=" + labelArr[i] + ">";
 			imgCont+='</div>';
 			imgCont+='<div class="journal-text">';
 			imgCont+=textArr[i];
@@ -91,7 +91,7 @@ $(dom_element).cycle('destroy');
   		captionTemplate: "{{slideNum}}: {{slideCount}}",
 		log: false
 	});
-	
+	console.log("dom element, does this mean anything?: ",$(dom_element));
 
 
 

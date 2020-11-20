@@ -605,8 +605,9 @@ $.fn.cycle.API = {
 $.fn.cycle.log = function log() {
     /*global console:true */
     if (window.console && console.log)
+    // console prints out an index in brackets [1] hash: sunset (string)
         console.log('[cycle2] ' + Array.prototype.join.call(arguments, ' ') );
-           
+         console.log("hash arguments: ",arguments );  
 };
 
 $.fn.cycle.version = function() { return 'Cycle2: ' + version; };
