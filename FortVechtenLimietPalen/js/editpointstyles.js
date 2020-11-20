@@ -1,6 +1,9 @@
 var selectStyleFunction = function(feature, resolution) {
 	//let label=feature.get("id");
+	//let label= feature.getId()
 	let label= feature.get("label");
+	console.log("select style Feature ids: ",label)
+
 //	console.log("Feature ids: ",label)
 	if ( label !== undefined ) {
 	// set indices to start from 1 instead of zero, consistent with cycle
@@ -35,6 +38,7 @@ var selectStyleFunction = function(feature, resolution) {
 	var style = [new ol.style.Style(textStyle),new ol.style.Style(textStyleBack)];
 	return style;
 } else {
+	//console.log("select why do i see this?");
 // do nothing
 }
 	};
@@ -44,7 +48,10 @@ var selectStyleFunction = function(feature, resolution) {
 var textStyleFunction = function(feature, resolution) {
 	
 //	var label=feature.get("id");
+	//let label= feature.getId()
 	let label= feature.get("label");
+	console.log("text style Feature ids: ",label)
+
 //	console.log("Feature ids: ",label)
 	if ( label !== undefined ) {
 		//console.log("is this numeric? ",typeof label);
@@ -82,6 +89,7 @@ var textStyleFunction = function(feature, resolution) {
 	var style = [new ol.style.Style(textStyle),new ol.style.Style(textStyleBack)];
 	return style;
 	} else {
+//console.log("text why do i see this?");
 // do nothing
 }
 };

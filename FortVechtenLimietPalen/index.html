@@ -1,56 +1,69 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8" />
-<title>Fort Vechten LimietPalen</title>
+  <meta charset="utf-8" />
+  <title>Local github Edit Points</title>
+   <link rel="stylesheet" type="text/css" href="css/reset.css">
+ <link rel="stylesheet" type="text/css" href="css/main.css"> 
 
-<link rel="stylesheet" type="text/css" href="css/reset.css">
-<link rel="stylesheet" type="text/css" href="css/main.css">
-<link rel="stylesheet" type="text/css" href="css/editpoints.css">
-<link rel="stylesheet" src="js/v4.6.5/css/ol.css" type="text/css">
+
+   <link rel="stylesheet" type="text/css" href="css/editpoints.css">  
+
+        <link rel="stylesheet" src="js/v4.6.5/css/ol.css" type="text/css"> 
+
+
+   
+    
+    
 <!-- Based on OpenLayers 3 Beginner's GuideCopyright © 2015 Packt Publishing-->
-<script src="js/v4.6.5/ol-debug.js"></script>
-<script src="js/jquery/jquery.min.js"></script>
-<script src="js/jquery/jquery.cycle2.js"></script>
-<script src="js/pointstyles.js"></script>
-<script src="js/createmap.js"></script>
-<script src="js/createslideshow.js"></script>
-<script src="js/setupinteractive.js"></script>
-<script src="js/pointstyles.js"></script>
-<script src="js/showpoints.js"></script>
-
-</head>
-<body>
+  <script src="js/v4.6.5/ol-debug.js"></script>
+  <script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.cycle2.js"></script> 
+<script src="js/editpointstyles.js"></script> 
+<script src="js/editpoints.js"></script> 
+<style type="text/css">
+#statusmessage {
+color: red;
+}
+   </style>
+  </head>
+  <body>
 <div id="headercontainer"> 
 <div class="headertext">
 
+  <h2> Foto locations</h2>
 
-  <h2>Limiet Palen locations</h2>
-
-<p>
-Left click on map and move to focus map on points. Scroll to zoom in and out.  </p>
-<p>Click on map symbols to view foto for that point.</p>
 </div> 
-<div style="clear: both;"></div> 
+ <div style="clear: both;"></div> 
+
 </div>
   
 
- <div class="panelcontent">
+   <div class="panelcontent">
     <div id="map" class="map"></div>
 </div>
-<div class="panelcontent">
-<!-- Slideshow -->
-	<div class="center_element">
-	<div class="dom_element"></div>
-	</div>
-	<a id="prev" href=#><span class="arrows">Prev</span></a>
-	<a id="next" href=#><span class="arrows">Next</span></a>
-	<div id="custom-caption" class="center"></div>	
-	</div>
 
+
+
+  <div class="panelcontent">
+  <p>Center of map is extracted from feature information</p>
+ <!--    <p>Select json file : <input type="file" id="handlerfiles"  /><br>
+    Make sure all buttons are unselected by clicking on the map. <br> -->
+<!--  <button id="handlerfiles" type="submit">show locations </button>  <br>  -->
+<div id="statusmessage"></div>
+<!-- <button id="newlayer" type="submit">Show new points </button> <br> -->
+
+
+<!-- Slideshow -->
+<div class="center_element">
+<div class="dom_element"></div>
+</div>
+<a id="prev" href=#><span class="arrows">Prev</span></a>
+<a id="next" href=#><span class="arrows">Next</span></a>  
+<div id="custom-caption" class="center"></div>
+</div>
 
 <script type="text/javascript">
-
 
 var pointerSize = parseInt($("#next").css("width"));
 
@@ -59,7 +72,7 @@ let buttonTop = $(".center_element").css("height") + parseInt(pointerSize);
 
 $("#prev").css("top",parseInt(buttonTop));
 $("#next").css("top",parseInt(buttonTop));
-var buttonLeft = $(".center_element").width()
+var buttonLeft = $(".center_element").width() 
 $("#prev").css("right",buttonLeft);
 var buttonRight = 0;
 $("#next").css("right",buttonRight);
@@ -67,12 +80,20 @@ $("#next").css("right",buttonRight);
 
 $("#next").click(function(){
     $(".scroll-pane").scrollTop(0);
-});
+}); 
 $("#prev").click(function(){
 	console.log("Click on prev");
     $(".scroll-pane").scrollTop(0);
-});
+}); 
 /* text height has to be function of foto size but stay within slide-container */
-</script>
-</body>
+
+
+
+
+</script> 
+ 
+
+ 
+ 
+  </body>
 </html>
