@@ -16,7 +16,7 @@ Setup: Most important object containing data that is common and needed throughou
 	const GD = {
 	map: null,
 	projectprefix: null,
-	datapath: "data/json/",
+	datapath: "./data/json/",
 	//versionIndex: 0,
 	dom_element: ".dom_element",
 	slide_element:  ".slide_element",
@@ -61,7 +61,7 @@ $(GD.dom_element).cycle('destroy');
 	
 	let sourceVector = layerVector.getSource();
 //	console.log("prefix: ",prefix)
-		let thumbdir=GD.projectprefix.concat("_thumb/");
+		let thumbdir=GD.projectprefix.concat("thumb/");
 
 	let imagepath = GD.datapath + thumbdir;
 		console.log("imagepath for images: ",imagepath)
