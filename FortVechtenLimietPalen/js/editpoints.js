@@ -16,7 +16,7 @@ Setup: Most important object containing data that is common and needed throughou
 	const GD = {
 	map: null,
 	projectprefix: null,
-	datapath: "./data/json/",
+	datapath: "data/json/",
 	//versionIndex: 0,
 	dom_element: ".dom_element",
 	slide_element:  ".slide_element",
