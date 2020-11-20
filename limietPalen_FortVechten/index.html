@@ -1,68 +1,74 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>LimietPalen</title>
-<meta name="generator" content="Bluefish 2.2.11" >
-<meta name="author" content="Rose Dlhopolsky" >
-<meta name="date" content="2020-10-06T16:45:16+0200" >
-<meta name="copyright" content="">
-<meta name="keywords" content="">
-<meta name="description" content="">
-<meta name="ROBOTS" content="NOINDEX, NOFOLLOW">
-<meta http-equiv="content-type" content="text/html; charset=UTF-8">
-<meta http-equiv="content-type" content="application/xhtml+xml; charset=UTF-8">
-<meta http-equiv="content-style-type" content="text/css">
-<meta http-equiv="expires" content="0"> 
-<link href="css/style.css" rel="stylesheet" type="text/css"> 
-<link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
-
+<meta charset="utf-8" />
+<title>Showpoints</title>
+<link rel="stylesheet" type="text/css" href="css/reset.css">
+<link rel="stylesheet" type="text/css" href="css/main.css">
+<link rel="stylesheet" type="text/css" href="css/editpoints.css">
+<link rel="stylesheet" src="js/v4.6.5/css/ol.css" type="text/css">
+<!-- Based on OpenLayers 3 Beginner's GuideCopyright © 2015 Packt Publishing-->
+<script src="js/v4.6.5/ol-debug.js"></script>
+<script src="js/jquery/jquery.min.js"></script>
+<script src="js/jquery/jquery.cycle2.js"></script>
+<script src="js/pointstyles.js"></script>
+<script src="js/createmap.js"></script>
+<script src="js/createslideshow.js"></script>
+<script src="js/setupinteractive.js"></script>
+<script src="js/pointstyles.js"></script>
+<script src="js/showpoints.js"></script>
 </head>
 <body>
-<a name="top"></a>
+<div id="headercontainer"> 
+<div class="headertext">
 
 
+  <h2>Edit Foto locations</h2>
 
+<p>
+Left click on map and move to focus map on points. Scroll to zoom in and out.  </p>
+<p>Click on map symbols to view foto for that point.</p>
+</div> 
+<div style="clear: both;"></div> 
+</div>
+  
 
-<a name="jsonreadme"></a>
-
-
-  <h2>Edit JSON locations</h2>
-  <p>Edit check locations to work for json.</p>
- 
-<h2>Work Flow</h2>
-
-<p>See editlocations for description the workflow. <a href="showpoints.html" target="_blank">showpoints.html </a>is a description of how this app differs. When I wanted to display the limietpalen, I realized that labelling of the points needed to have the number of the limiet palen. Orsomeway of labelling the FINAL points. </p>
-
-<p>So I have a location json that I am satisfied with. Now I want to display this in a journal format. This means slide show with maybe labels on the map. </p>
-
-<h2>Albums from Flickr</h2>
-<p><a href="server/writeSetid.html" target="_blank">writeSetid.html</a></p>
-<p>php writes json format. url and title of photo (filename without extension). </p>
-<h2>Tools and software</h2>  
-<p>This software is used to create the maps. The photograph website Flickr is where I store my photos on-line.  </p>
-<a href="#top">Back to top of page</a>
-
-<table>
-<tr>
-<td>Name</td>
-<td>Usage</td>
-<td>Notes</td>
-</tr>
-<tr>
-<td><a name="exiftools" href="https://exiftool.org/" target="_blank" >exiftool</a></td>
-<td>extracting geographical information from photos</td>
-<td></td>
-</tr>
-
-</table>
-
+ <div class="panelcontent">
+    <div id="map" class="map"></div>
+</div>
+<div class="panelcontent">
+<!-- Slideshow -->
+	<div class="center_element">
+	<div class="dom_element"></div>
+	</div>
+	<a id="prev" href=#><span class="arrows">Prev</span></a>
+	<a id="next" href=#><span class="arrows">Next</span></a>
+	<div id="custom-caption" class="center"></div>	
+	</div>
 
 <script type="text/javascript">
-// Prefer page to start at top when reloaded. RMD 
-// Thanks to https://stackoverflow.com/a/26837814
-window.onbeforeunload = function () {
-  window.scrollTo(0, 0);
-}
+
+var pointerSize = parseInt($("#next").css("width"));
+
+let buttonTop = $(".center_element").css("height") + parseInt(pointerSize);
+
+
+$("#prev").css("top",parseInt(buttonTop));
+$("#next").css("top",parseInt(buttonTop));
+var buttonLeft = $(".center_element").width()
+$("#prev").css("right",buttonLeft);
+var buttonRight = 0;
+$("#next").css("right",buttonRight);
+
+
+$("#next").click(function(){
+    $(".scroll-pane").scrollTop(0);
+});
+$("#prev").click(function(){
+	console.log("Click on prev");
+    $(".scroll-pane").scrollTop(0);
+});
+/* text height has to be function of foto size but stay within slide-container */
 </script>
 </body>
 </html>
