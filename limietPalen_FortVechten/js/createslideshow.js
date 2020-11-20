@@ -43,7 +43,7 @@ $(dom_element).cycle('destroy');
 	
 	//
 	let sourceVector = vectorLayer.getSource();
-	let thumbdir=GD.props.projectprefix.concat("thumb/");
+	let thumbdir=GD.props.projectprefix.concat("_thumb/");
 	let imagepath = GD.props.datapath + thumbdir;
 //		console.log("imagepath for images: ",imagepath)
 	var index,itemArr,textArr,labelArr;
