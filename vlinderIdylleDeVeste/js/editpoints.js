@@ -96,7 +96,7 @@ for(var i= 0;i< itemArr.length;++i){
 var imgCont = '<div class="slide_element" >';
 imgCont+='<div class="foto-pane">';
 imgCont+='<div class="photo">';
-imgCont+= '<img src=' + itemArr[i] + '/>';
+imgCont+= '<img src=' + itemArr[i] + '>';
 imgCont+='</div>';
 imgCont+='<div class="journal-text">';
 imgCont+=textArr[i];

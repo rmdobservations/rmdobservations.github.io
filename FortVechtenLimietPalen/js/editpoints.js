@@ -78,6 +78,7 @@ $(GD.dom_element).cycle('destroy');
 	//console.log("Image path and description: ",description);
 	var index=feature.getId();
 		itemArr[index]=image;
+		console.log("Image: ",image);
 		textArr[index]=feature.get("name");
 		});
 		//console.log("images wrong order Read: ",itemArr)
@@ -94,7 +95,7 @@ for(var i= 0;i< itemArr.length;++i){
 var imgCont = '<div class="slide_element" >';
 imgCont+='<div class="foto-pane">';
 imgCont+='<div class="photo">';
-imgCont+= '<img src=' + itemArr[i] + '/>';
+imgCont+= '<img src=' + itemArr[i] + '>';
 imgCont+='</div>';
 imgCont+='<div class="journal-text">';
 imgCont+=textArr[i];
