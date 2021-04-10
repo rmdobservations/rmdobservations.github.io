@@ -2,9 +2,9 @@
 ## Maps and Fotos Websites
 https://rmdobservations.github.io/index.html
 ## Work in Progress
-[comment]: <>  
+[comment]: <Needs to be in prackets> and not outside  
 ![Limiet Palen around Fort Vechten](./limietPalen_FortVechten/limietpalenFortVechten.png)
-[comment]: <what is this >  - aim of project
+[comment]: <aim of project>  
 # Table of contents
 * Introduction
 * Technologies
