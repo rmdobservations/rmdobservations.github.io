@@ -1,10 +1,10 @@
 # RMD Observations
 ## Maps and Fotos Websites
 https://rmdobservations.github.io/index.html
-
+## Work in Progress
 [comment]: <>  
 ![Limiet Palen around Fort Vechten](./limietPalen_FortVechten/limietpalenFortVechten.png)
-[comment]: <>  - aim of project
+[comment]: <what is this >  - aim of project
 # Table of contents
 * Introduction
 * Technologies
@@ -29,7 +29,6 @@ Emphasis is made on small projects. No node.js stuff.
 
 ## Table of contents
 * [limietpalen](https://rmdobservations.github.io/limietPalen_FortVechten/index.html)
-* [vlinderidylle](https://rmdobservations.github.io/vlinderIdylleDeVeste/index.html)
 * [Setup](#setup)
 
 ## General info
