@@ -3,7 +3,7 @@
 https://rmdobservations.github.io/index.html
 ## Work in Progress
 [comment]: <Needs to be in prackets>
-![Limiet Palen around Fort Vechten](./limietPalen_FortVechten/limietpalenFortVechten.png)
+
 [comment]: <aim of project>  
 # Table of contents
 * Introduction
